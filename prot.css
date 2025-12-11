@@ -3920,98 +3920,15 @@ footer p {
     color: #f8fafc;
 }
 /* SKILLS SECTION STYLES - YELLOW VERSION */
-.skills {
-    padding: 80px 0;
-    background: #fff9db; /* Soft yellow background */
-    position: relative;
-    overflow: hidden;
-}
-
-/* Optional: Add some subtle pattern */
-.skills::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: radial-gradient(#ffd43b 1px, transparent 1px);
-    background-size: 30px 30px;
-    opacity: 0.1;
-    pointer-events: none;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.8rem;
-    margin-bottom: 50px;
-    color: #2d3436;
-    position: relative;
-    z-index: 2;
-}
-
-.section-title span {
-    color: #e67700; /* Orange color for accent */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
+/* Skills Grid Layout - Fixed */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    position: relative;
-    z-index: 2;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
 }
 
-.skill-category {
-    background: white;
-    border-radius: 16px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(230, 119, 0, 0.1);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid #ffd8a8;
-    backdrop-filter: blur(10px);
-}
-
-.skill-category:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(230, 119, 0, 0.15);
-    border-color: #ffa94d;
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.skill-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #ffe8cc;
-}
-
-.skill-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #ffd43b, #f08c00);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px rgba(240, 140, 0, 0.2);
-}
-
-.skill-icon i {
-    font-size: 1.5rem;
-    color: white;
-}
-
-.skill-header h3 {
-    font-size: 1.5rem;
-    color: #2d3436;
-    margin: 0;
-    font-weight: 600;
-}
-
+/* Skill Tags Layout - Exactly like image */
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
@@ -4019,25 +3936,40 @@ footer p {
 }
 
 .skill-tag {
-    background: linear-gradient(135deg, #ffec99, #ffd43b);
-    color: #5c3c00;
-    padding: 10px 18px;
-    border-radius: 25px;
+    background: #eef2f7;
+    color: #4a6fa5;
+    padding: 8px 15px;
+    border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 500;
-    transition: all 0.3s;
-    border: 1px solid #ffd8a8;
-    box-shadow: 0 3px 10px rgba(255, 212, 59, 0.2);
+    white-space: nowrap;
 }
 
-.skill-tag:hover {
-    background: linear-gradient(135deg, #ffd43b, #f08c00);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(240, 140, 0, 0.3);
-    border-color: #f08c00;
+/* Professional Skills specific - 2 columns layout */
+.skill-category:last-child .skill-tags {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
+/* AI/Data Skills - Full width for long tags */
+.skill-category:nth-child(3) .skill-tag {
+    width: 100%;
+    text-align: left;
+    white-space: normal;
+}
+
+/* Database Skills - Center single item */
+.skill-category:nth-child(4) .skill-tags {
+    justify-content: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skill-category:last-child .skill-tags {
+        grid-template-columns: 1fr;
+    }
+}
 /* Responsive */
 @media (max-width: 768px) {
     .skills-grid {
@@ -4072,4 +4004,158 @@ footer p {
 @keyframes rotate {
     0% { background-position: 0% 50%; }
     100% { background-position: 100% 50%; }
+}
+/* Complete Skills Section Reset */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+/* Reset all skill tags to block display */
+.skill-tags {
+    display: block !important;
+    width: 100%;
+}
+
+/* Remove all previous grid/flex styles */
+.skill-tag {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+    text-align: left !important;
+    padding: 12px 15px !important;
+    background: #eef2f7 !important;
+    color: #4a6fa5 !important;
+    border-radius: 20px !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    box-sizing: border-box !important;
+    float: none !important;
+    clear: both !important;
+}
+
+/* Programming Skills - 2 column layout */
+.skill-category:first-child .skill-tags {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+}
+
+.skill-category:first-child .skill-tag {
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    padding: 10px 5px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Make OOP Concepts full width in programming */
+.skill-category:first-child .skill-tag:nth-child(5) {
+    grid-column: span 2 !important;
+    width: 100% !important;
+    justify-self: center !important;
+    min-width: 150px !important;
+}
+
+/* Web Technologies - 3 in a row */
+.skill-category:nth-child(2) .skill-tags {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+}
+
+.skill-category:nth-child(2) .skill-tag {
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    padding: 12px 5px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* AI/Data Skills - each full width */
+.skill-category:nth-child(3) .skill-tags {
+    display: block !important;
+}
+
+.skill-category:nth-child(3) .skill-tag {
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    text-align: left !important;
+    padding: 12px 15px !important;
+}
+
+/* Database - center single item */
+.skill-category:nth-child(4) .skill-tags {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.skill-category:nth-child(4) .skill-tag {
+    width: auto !important;
+    min-width: 120px !important;
+    text-align: center !important;
+    padding: 12px 25px !important;
+    margin-bottom: 0 !important;
+}
+
+/* Professional Skills - Grid layout */
+.skill-category:last-child .skill-tags {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+.skill-category:last-child .skill-tag {
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    padding: 12px 5px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+}
+
+/* Make Leadership full width */
+.skill-category:last-child .skill-tag:nth-child(5) {
+    grid-column: span 2 !important;
+    width: 100% !important;
+    margin-top: 5px !important;
+}
+
+/* Ensure cards have enough height */
+.skill-category {
+    min-height: fit-content !important;
+    height: auto !important;
+    overflow: visible !important;
+    padding-bottom: 25px !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skill-category:first-child .skill-tags,
+    .skill-category:last-child .skill-tags {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .skill-category:first-child .skill-tag:nth-child(5),
+    .skill-category:last-child .skill-tag:nth-child(5) {
+        grid-column: span 1 !important;
+    }
+    
+    .skill-category:nth-child(2) .skill-tags {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    
+    .skill-category:nth-child(2) .skill-tag:last-child {
+        grid-column: span 2 !important;
+    }
 }
